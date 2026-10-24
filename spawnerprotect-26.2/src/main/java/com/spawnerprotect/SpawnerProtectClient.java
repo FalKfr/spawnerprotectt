@@ -72,7 +72,7 @@ public class SpawnerProtectClient implements ClientModInitializer {
                 Identifier.fromNamespaceAndPath("spawnerprotect", "status"),
                 (graphics, deltaTracker) -> {
                     Minecraft mc = Minecraft.getInstance();
-                    if (mc.player == null || mc.options.hideGui) return;
+                    if (mc.player == null) return;
                     graphics.text(mc.font, statusText(), 4, 4, 0xFFFFFFFF, true);
                 });
     }
@@ -91,9 +91,6 @@ public class SpawnerProtectClient implements ClientModInitializer {
                 active = false;
                 releaseKeys(mc);
             }
-            if (mc.player != null) {
-                mc.player.displayClientMessage(statusText(), true);
-            }
         }
         if (!enabled) return;
 
@@ -110,8 +107,8 @@ public class SpawnerProtectClient implements ClientModInitializer {
             if (findSpawners(mc).isEmpty()) return;
             active = true;
             ticks = 0;
-            player.displayClientMessage(
-                    Component.literal("[Spawner Protect] Player detected, breaking skeleton spawners..."), false);
+            player.sendSystemMessage(
+                    Component.literal("[Spawner Protect] Player detected, breaking skeleton spawners..."));
         }
 
         ticks++;
