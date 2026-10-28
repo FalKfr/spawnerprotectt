@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "spawnerprotect",
+  "version": "${version}",
+  "name": "Spawner Protect",
+  "description": "Breaks nearby skeleton spawners with a silk touch pickaxe and logs off when another player shows up.",
+  "authors": ["you"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.spawnerprotect.SpawnerProtectClient"],
+    "modmenu": ["com.spawnerprotect.ModMenuIntegration"]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "modmenu": "*"
+  }
+}
